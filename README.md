@@ -15,7 +15,8 @@ siguientes comandos:
 Si requiere alguna version especifica puede hacer uso de nvm, no obstante las versiones estándar incluidas en las
 distribuciones deberían ser
 suficientes.
----
+
+
 
 # Ejecución #
 
