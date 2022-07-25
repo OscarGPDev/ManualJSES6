@@ -69,8 +69,13 @@ const pokedex = () => {
         // Se agregan las etiquetas creadas previamente en nuestro forEach
         containers.pokemonTypesContainer.innerHTML = pokemonType;
     };
+    // Procesa las estadísticas del pokemon, recibe el objeto completo de la respuesta de la pokeapi
     const processPokemonStats = (pokemonData) => {
+        // El operador '?.' se llama encadenamiento opcional, si el elemento a la izquierda es null o undefined
+        // no ejecuta lo que esta a la derecha, más en https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Optional_chaining
         pokemonData.stats?.forEach((pokemonStatData) => {
+            // Evalua el nombre de la estadística, y coloca su valor en su respectivo contenedor, y le aplica un
+            // estilo de gradiente, para hacer más visual el efecto.
             switch (pokemonStatData.stat.name) {
                 case "hp":
                     pokemonStatsElements.hp.innerHTML = pokemonStatData.base_stat;
@@ -99,6 +104,7 @@ const pokedex = () => {
             }
         });
     };
+    // Procesa los movimientos del pokemon, y los coloca en su respectivo contenedor
     const processPokemonMoves = (pokemonData) => {
         let pokemonMovesContent = "";
         pokemonData.moves?.forEach((pokemonMove) => {
@@ -106,6 +112,7 @@ const pokedex = () => {
         });
         containers.pokemonMovesElement.innerHTML = pokemonMovesContent;
     };
+    // Procesa las habilidades del pokemon, y los coloca en su respectivo contenedor
     const processPokemonAbilities = (pokemonData) => {
         let pokemonAbilitiesContent = "";
         pokemonData.abilities?.forEach((pokemonAbility) => {
@@ -113,42 +120,70 @@ const pokedex = () => {
         });
         containers.pokemonAbilitiesElement.innerHTML = pokemonAbilitiesContent;
     };
+    // Pone la imagen de cargando y deshabilita los botones
     const setLoading = () => {
         containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", images.imgLoading);
         buttons.all.forEach(button => button.disabled = true);
     };
+    // Vuelve a habilitar los botones
     const setLoadingComplete = () => {
         buttons.all.forEach(button => checkDisabled(button));
     };
-    const getPokemonData = async (pokemonName) => fetch(`${pokeApiUrl}pokemon/${pokemonName}`)
+    /***********************************************************************************************************/
+    // Esta función es la que consulta la pokeapi para obtener la información del pokemon solicitado
+    // fetch nos sirve para hacer solicitudes a otros sitios, pero también se puede usar para cargar archivos locales
+    // fetch recibe la url del recurso o destino de la petición, y un objeto que nos ayuda a establecer algunos parámetros
+    // de la petición, fetch devuelve una promesa, por eso tiene un then y un catch, por otro lado, getPokemonData, devuelve
+    // un objeto json con la información del pokemon, o en caso de error, el objeto json contiene el campo que indica que
+    // la petición falló https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch
+    const getPokemonData = async (pokemonName) => fetch(`${pokeApiUrl}pokemon/${pokemonName}`, {
+        // Existen varios métodos HTTP que sirven, entre otras cosas, para especificar el tipo de petición, pero también
+        // son necesarios para enviar adecuadamente sus parámetros https://developer.mozilla.org/es/docs/Web/HTTP/Methods
+        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        // En las cabeceras de la petición se puede especificar el tipo de información que vamos a utilizar, también
+        // aquí se suelen colocar, por ejemplo la identidad del usuario por si la petición requiere alguna información
+        // de este o por motivos de seguridad https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Type
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
         .then((res) => res.json())
         .catch((error) => ({requestFailed: true}));
+    /***********************************************************************************************************/
+    // válida si debe deshabilitar los botones o no, en este caso, únicamente el botón inferior, si está en el ID 1,
+    // ya que no hay pokemon con ID negativo
     const checkDisabled = (button) => {
         button.disabled = button.id === "btnDown" && containers.pokemonIdElement.value <= 1;
     };
+    // Esta es la función principal, válida que reciba un nombre o ID y realiza la búsqueda del pokemon y procesa
+    // la respuesta para colocar los datos en sus respectivos elementos HTML
     const setPokemonData = async (pokemonName) => {
         if (pokemonName) {
+            // pone la imagen de búsqueda y deshabilita los botones en lo que realiza la consulta
             setLoading();
+            // realiza la consulta, en este caso, con await espera hasta tener respuesta, primero utilizo un operador
+            // ternario para poner el nombre en minúsculo si es string
+            // operador ternario: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+            // await: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/await
             const pokemonData = await getPokemonData(typeof pokemonName === typeof "" ? pokemonName.toLowerCase() : pokemonName);
             if (pokemonData.requestFailed) {
+                // Si no se encontró el pokemon, se pone la imagen de no encontrado
                 containers.imageContainer.innerHTML = imageTemplate.replace("{imgSrc}", images.imgPokemonNotFound);
             } else {
+                // Pone las imágenes del pokemon, su nombre y el ID del pokemon
                 containers.imageContainer.innerHTML = `
-      
-      
         ${imageTemplate.replace("{imgSrc}", pokemonData.sprites.front_default)}
-      
-      
         ${imageTemplate.replace("{imgSrc}", pokemonData.sprites.front_shiny)}
-      
-      `;
+                `;
                 containers.pokemonNameElement.innerHTML = pokemonData.name;
                 containers.pokemonIdElement.value = pokemonData.id;
+                // reparte el resto de procesamientos pertinentes a cada función
                 processPokemonTypes(pokemonData);
                 processPokemonStats(pokemonData);
                 processPokemonAbilities(pokemonData);
                 processPokemonMoves(pokemonData);
             }
+            // vuelve a habilitar los botones.
             setLoadingComplete();
         } else {
             // Esta es la forma de utilizar SweetAlert 2, por si te interesa aprender más sobre su uso puedes revisar su
@@ -163,16 +198,18 @@ const pokedex = () => {
     };
 
     const triggers = () => {
+        // se le vincula la función de búsqueda al botón de buscar.
         buttons.search.onclick = () => setPokemonData(pokemonInput.value);
+        // se le vincula la función de búsqueda al campo de texto para buscar cuando presionan enter
         pokemonInput.onkeyup = (event) => {
             event.preventDefault();
             if (event.key === "Enter") {
                 setPokemonData(pokemonInput.value);
             }
         }
+        // se le vincula la función de búsqueda al arriba y abajo, estos funcionan con el ID en lugar del campo de texto.
         buttons.next.onclick = () => setPokemonData(+containers.pokemonIdElement.value + 1);
         buttons.previous.onclick = () => setPokemonData(+containers.pokemonIdElement.value - 1);
-
     };
     setLoadingComplete();
     triggers();
