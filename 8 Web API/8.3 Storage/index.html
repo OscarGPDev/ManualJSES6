@@ -2,19 +2,41 @@
 <html lang="es-mx">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>TODO APP</title>
+    <script
+            src="https://kit.fontawesome.com/101326ea39.js"
+            crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="todoApp.js"></script>
 </head>
 <body>
 <header>
-    TODO APP
+    <h1>TODO APP</h1>
 </header>
 <main>
-    <section id="tasks">
-        <div>
-            <label>
-            <input>
-        </label>
-            <button></button>
+    <section class="tasks">
+        <div class="user-input">
+            <label for="taskName" class="d-none">
+                Ingresa el nombre de la tarea
+            </label>
+            <input type="text" id="taskName" class="" placeholder="Ingresa el nombre de la tarea">
+            <button id="addTask" class="btn"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <div class="tasks-list">
+            <ul id="taskList">
+                <li id="listItemTemplate">
+                    <div class="btn-list-item from-center">
+                        <button class="complete">
+                            <i class="fa-solid fa-check"></i>
+                        </button>
+                        {template}
+                        <button class="delete">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
         </div>
 
     </section>

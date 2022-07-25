@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+}
+
+body {
+
+    background: url(https://w.wallhaven.cc/full/95/wallhaven-95r8p8.jpg) no-repeat center;
+    background-size: cover;
+    height: 100vh;
+    --def: #96B7C4;
+    --inv: #fff;
+}
+
+.d-none {
+    display: none;
+}
+
+label {
+    display: inline-block;
+}
+
+.btn {
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: none;
+    border-radius: 10px;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+main {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+header h1 {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.tasks {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    padding: 1rem;
+    width: 80vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.user-input {
+
+}
+
+.tasks-list {
+    margin-top: 1rem;
+    width: 60vw;
+    overflow-y: scroll;
+}
+
+input[type="text"] {
+    width: 50vw;
+    height: 10vh;
+    border-radius: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#taskList li {
+    width: 100%;
+    display: block;
+    border-bottom: black 5px dashed;
+}
+
+#taskList li div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#taskList .complete {
+    margin-left: 0;
+    color: #00be17;
+    margin-right: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* ~~~~~~~ INIT. BTN ~~~~~~~ */
+
+.btn-list-item {
+    position: relative;
+    padding: 1.4rem 3.1rem 1.4rem 4.2rem;
+    font-size: 1.4rem;
+    color: var(--inv);
+    letter-spacing: 0.5rem;
+    /*text-transform: uppercase;*/
+    transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
+    cursor: pointer;
+    user-select: none;
+}
+
+.btn-list-item:before, .btn-list-item:after {
+    content: '';
+    position: absolute;
+    transition: inherit;
+    z-index: -1;
+}
+
+.btn-list-item:hover {
+    color: var(--def);
+    transition-delay: .5s;
+}
+
+.btn-list-item:hover:before {
+    transition-delay: 0s;
+}
+
+.btn-list-item:hover:after {
+    background: var(--inv);
+    transition-delay: .35s;
+}
+
+
+/* From center */
+
+.from-center:before {
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 0;
+    border: 1px solid var(--inv);
+    border-left: 0;
+    border-right: 0;
+}
+
+.from-center:after {
+    bottom: 0;
+    left: 0;
+    height: 0;
+    width: 100%;
+    background: var(--inv);
+}
+
+.from-center:hover:before {
+    left: 0;
+    width: 100%;
+}
+
+.from-center:hover:after {
+    top: 0;
+    height: 100%;
+}
+
+/* ~~~~~~~~~~~~ GLOBAL SETTINGS ~~~~~~~~~~~~ */
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+
+#taskList .delete {
+    margin-left: auto;
+    margin-right: 0;
+    color: red;
+    background-color: transparent;
+    border: none;
+}
+
+*:before, *:after {
+    box-sizing: border-box;
+}
