@@ -239,4 +239,13 @@ ul {
     max-width: 100%;
     color: white;
     overflow-y: scroll;
+    list-style-type: none;
+}
+
+#pokemonMoves li::before {
+    content: "💾 ";
+}
+
+#pokemonAbilities li::before {
+    content: "⛏️ ";
 }
