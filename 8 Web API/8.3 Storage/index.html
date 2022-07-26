@@ -17,16 +17,16 @@
 <main>
     <section class="tasks">
         <div class="user-input">
-            <label for="taskName" class="d-none">
+            <label for="txtTaskName" class="d-none">
                 Ingresa el nombre de la tarea
             </label>
-            <input type="text" id="taskName" class="" placeholder="Ingresa el nombre de la tarea">
-            <button id="addTask" class="btn"><i class="fa-solid fa-plus"></i></button>
+            <input type="text" id="txtTaskName" class="" placeholder="Ingresa el nombre de la tarea">
+            <button id="btnAddTask" class="btn"><i class="fa-solid fa-plus"></i></button>
         </div>
         <div class="tasks-list">
             <ul id="taskList">
                 <li id="listItemTemplate">
-                    <div class="btn-list-item from-center">
+                    <div class="btn-list-item from-center {completed}" id="{id}">
                         <button class="complete">
                             <i class="fa-solid fa-check"></i>
                         </button>
