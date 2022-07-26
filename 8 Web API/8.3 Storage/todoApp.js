@@ -65,7 +65,6 @@ const todoApp = () => {
     };
     const renderTasks = () => {
         DOMElements.taskList.innerHTML = storage.getItems() ? "" : "<li>No hay tareas aun</li>";
-        console.log("rendering")
         storage.getItems().forEach(task => {
             // El elemento template se usa para elementos que no se renderizan en el dom de forma inicial
             // https://developer.mozilla.org/es/docs/Web/HTML/Element/template
