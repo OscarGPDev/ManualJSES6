@@ -12,7 +12,7 @@
 </head>
 <body>
 <header>
-    <h1>TODO APP</h1>
+    <h1 id="title">TODO APP</h1><i class="fa-solid fa-pen-to-square" id="editUser"></i>
 </header>
 <main>
     <section class="tasks">
@@ -20,8 +20,9 @@
             <label for="txtTaskName" class="d-none">
                 Ingresa el nombre de la tarea
             </label>
-            <input type="text" id="txtTaskName" class="" placeholder="Ingresa el nombre de la tarea">
+            <input type="text" id="txtTaskName" class="text-input" placeholder="Ingresa el nombre de la tarea">
             <button id="btnAddTask" class="btn"><i class="fa-solid fa-plus"></i></button>
+            <button id="btnChangeWallpaper" class="btn"><i class="fa-solid fa-panorama"></i></button>
         </div>
         <div class="tasks-list">
             <ul id="taskList">
@@ -41,5 +42,7 @@
 
     </section>
 </main>
+<!--Este es una librería para mensajes tipo alertas, simplemente se escogió por fines estéticos-->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

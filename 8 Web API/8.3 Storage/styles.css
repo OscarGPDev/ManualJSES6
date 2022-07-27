@@ -78,7 +78,7 @@ header h1 {
     overflow-y: scroll;
 }
 
-input[type="text"] {
+.text-input {
     width: 50vw;
     height: 10vh;
     border-radius: 10px;
@@ -195,7 +195,12 @@ ul {
 *:before, *:after {
     box-sizing: border-box;
 }
-.completed{
+
+.completed {
     text-decoration: line-through;
     color: #b7b7b7;
+}
+
+#editUser {
+    cursor: pointer;
 }
