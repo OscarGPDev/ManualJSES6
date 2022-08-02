@@ -145,7 +145,8 @@ const pokedex = () => {
         // de este o por motivos de seguridad https://developer.mozilla.org/es/docs/Web/HTTP/Headers/Content-Type
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        // body: JSON.stringify(miObjetoJson)||"" IMPORTANTE:Cuando tu petición use un cuerpo(por ejemplo post y put), debes convertirlo a string
     })
         .then((res) => res.json())
         .catch((error) => ({requestFailed: true}));

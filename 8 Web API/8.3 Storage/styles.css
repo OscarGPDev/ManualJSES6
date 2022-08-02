@@ -47,7 +47,15 @@ header {
     align-items: center;
     justify-content: center;
     color: #fff;
+    flex-direction: column;
     background-color: rgba(0, 0, 0, 0.6);
+}
+
+header div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
 }
 
 header h1 {
