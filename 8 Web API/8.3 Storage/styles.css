@@ -58,6 +58,15 @@ header div {
     margin-bottom: 1rem;
 }
 
+#updateBitcoinData {
+    cursor: pointer;
+    padding-left: 1rem;
+}
+
+#bitcoinData {
+    margin: auto;
+}
+
 header h1 {
     margin-bottom: 1rem;
     margin-top: 1rem;
