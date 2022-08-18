@@ -6,11 +6,11 @@ body {
 
 @font-face {
     font-family: "Chintzy";
-    src: url("./fonts/chintzy-webfont.eot");
-    src: url("./fonts/chintzy-webfont.eot?#iefix") format("embedded-opentype"),
-    url("./fonts/chintzy-webfont.woff") format("woff"),
-    url("./fonts/chintzy-webfont.ttf") format("truetype"),
-    url("./fonts/chintzy-webfont.svg#MicrosoftYaHei") format("svg");
+    src: url("fonts/chintzy-webfont.eot");
+    src: url("fonts/chintzy-webfont.eot?#iefix") format("embedded-opentype"),
+    url("fonts/chintzy-webfont.woff") format("woff"),
+    url("fonts/chintzy-webfont.ttf") format("truetype"),
+    url("fonts/chintzy-webfont.svg#MicrosoftYaHei") format("svg");
 }
 
 header {
