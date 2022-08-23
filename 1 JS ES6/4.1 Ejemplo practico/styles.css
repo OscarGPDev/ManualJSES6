@@ -1,0 +1,44 @@
+* {
+    margin: 0
+}
+
+.result-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+    border-left: 5px solid #8498A3;
+    border-bottom: 5px solid #8498A3;
+    border-radius: 13px;
+    /*background-color: #c0cdd7;*/
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+}
+
+.controls > * {
+    margin: 20px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+#results {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+#results > div{
+    margin:10px 20px;
+}
+label > i, .favorite{
+    color: #e01717;
+}

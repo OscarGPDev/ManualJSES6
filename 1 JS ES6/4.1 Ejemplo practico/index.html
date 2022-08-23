@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <title>4.1 Ejemplo práctico</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js"></script>
+    <script
+            src="https://kit.fontawesome.com/101326ea39.js"
+            crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+<header></header>
+<section>
+    <div class="controls">
+        <label>Pet type
+            <select id="selectPetType" name="selectPetType">
+                <option value>All</option>
+                <option value="1">Reptil</option>
+                <option value="2">Fish</option>
+                <option value="3">Bird</option>
+            </select>
+
+        </label>
+        <label>Search<input type="text" id="txtPetName"/></label>
+        <label><input type="checkbox" id="checkboxFavorites"><i class="fa-solid fa-heart"></i> In favorites</label>
+    </div>
+    <div id="results">
+
+    </div>
+    <template id="petItemTemplate">
+        <div class="result-element" id="{id}">
+            <img alt="pet image"
+                 src="{src}"/>
+            <div>
+                <h3>{name}</h3>
+                <p>{specie}</p>
+            </div>
+            <div>
+                <button class="btn-add favorite" title="Add to favorites" data-id="{id}"><i
+                        class="fa-solid fa-heart"></i></button>
+            </div>
+        </div>
+    </template>
+</section>
+
+</body>
+</html>
