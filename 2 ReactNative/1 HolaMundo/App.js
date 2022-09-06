@@ -8,7 +8,8 @@ export default function App() { // Este es nuestro functional component llamado 
     const message = "Este mensaje esta en una variable!";
     return (
         <ScrollView>
-            {/* ScrollView es un contenedor que permite scrollear en el dispositivo de forma vertical u horizontal de acuerdo al conenido*/}
+            {/* ScrollView es un contenedor que permite scrollear en el dispositivo de forma vertical u horizontal de
+            acuerdo al contenido*/}
             {/*View, es un componente que como su nombre indica, representa una vista o contenedor,
             el componente nativo que utiliza view, al que es traducido en Android es ViewGroup, para iOS UIView y para
             web, un div*/}
@@ -26,16 +27,14 @@ export default function App() { // Este es nuestro functional component llamado 
             {// Asi le ponemos las propiedades que requiere nuestro componente
             }
             <Item text="Crafting Kit" imagePath={require("./assets/crafting_kit_elden_ring_wiki_guide_200px.png")}/>
-            <Item text="Crafting Kit" imagePath={require("./assets/crafting_kit_elden_ring_wiki_guide_200px.png")}/>
-            <Item text="Crafting Kit" imagePath={require("./assets/crafting_kit_elden_ring_wiki_guide_200px.png")}/>
-            <Item text="Crafting Kit" imagePath={require("./assets/crafting_kit_elden_ring_wiki_guide_200px.png")}/>
-            <Item text="Crafting Kit" imagePath={require("./assets/crafting_kit_elden_ring_wiki_guide_200px.png")}/>
-            <Item text="Crafting Kit" imagePath={require("./assets/crafting_kit_elden_ring_wiki_guide_200px.png")}/>
+            <Item text="Dark Moon Greatsword" imagePath={{
+                uri: "https://eldenring.wiki.fextralife.com/file/Elden-Ring/dark_moon_greatsword_weapon_elden_ring_wiki_guide_200px.png"
+            }}/>
             <StatusBar style="auto"/>
         </ScrollView>
     );
 }
-// De esta forma creamos estilos, se utilizan propiedades css en notación camell case
+// De esta forma creamos estilos, se utilizan propiedades css en notación camel case
 
 const styles = StyleSheet.create({
     container: {

@@ -2,8 +2,8 @@ import {Image, StyleSheet, Text, View} from "react-native";
 
 const styles = StyleSheet.create({
     image: {
-        maxHeight: "100px",
-        maxWidth: "100px",
+        height: 100,
+        width: 100,
     },
     container: {
         flex: 1,
@@ -29,7 +29,7 @@ const Item = ({imagePath, text}) => {
                 }}/>
                 https://reactnative.dev/docs/image#examples
             */}
-            <Image source={imagePath}/>
+            <Image source={imagePath} style={styles.image}/>
             <Text>{text}</Text>
         </View>
     );
