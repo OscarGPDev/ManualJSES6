@@ -1,0 +1,14 @@
+{
+  "name": "1testing_server",
+  "version": "1.0.0",
+  "description": "a dummy server for testing with insomnia",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "oscargpdev",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
