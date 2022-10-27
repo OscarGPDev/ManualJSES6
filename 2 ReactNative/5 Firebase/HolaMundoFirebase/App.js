@@ -105,7 +105,6 @@ const App = () => {
     }
     // Función para iniciar la sesión de un usuario registrado en firebase
     const loginWithEmailAndPassword = () => {
-        console.log(userLoginData)
         auth()
             .signInWithEmailAndPassword(userLoginData.email, userLoginData.password)
             .then(() => {
@@ -161,7 +160,6 @@ const App = () => {
                             <Text>
                                 Ingresa tu contraseña
                             </Text>
-
                             <TextInput textContentType="password"
                                        onChangeText={newText => setUserLoginData({
                                            ...userLoginData,
@@ -176,7 +174,6 @@ const App = () => {
                     </Section>: <Section title={`Bienvenido: ${user.email}`}>
                             <Button title="Cerrar sesión" onPress={logout}></Button>
                     </Section>}
-
                 </View>
             </ScrollView>
         </SafeAreaView>
