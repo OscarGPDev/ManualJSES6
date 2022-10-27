@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "341486244909",
+    "project_id": "holamundofirebasereactnative",
+    "storage_bucket": "holamundofirebasereactnative.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:341486244909:android:403f08aa8e8c2c06f654a4",
+        "android_client_info": {
+          "package_name": "com.holamundofirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "341486244909-uv82kmsn3toebb1acs03rtboqes0jobm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKiFmbTVDQW-IRdivM377hB7xlFCEPd_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "341486244909-uv82kmsn3toebb1acs03rtboqes0jobm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
