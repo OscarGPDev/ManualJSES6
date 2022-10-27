@@ -56,23 +56,36 @@ const App = () => {
     const backgroundStyle = {
         backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
     };
-    // Set an initializing state whilst Firebase connects
+    // En este caso manejo estos 3 estados, initializing, es porque la API de autenticación necesita ser inicializada,
+    // por lo que nno sirve de nada mostrar algo cuando no lo esté, user es el que contendrá la sesión tal cual del
+    // usuario y userLoginData, es para el formulario de inicio de sesión o registro
     const [initializing, setInitializing] = useState(true);
     const [user, setUser] = useState();
     const [userLoginData, setUserLoginData] = useState({email: "", password: ""});
 
-    // Handle user state changes
-    function onAuthStateChanged(user) {
+    // aut necesita un callback que ejecutar cada que cambia el estado de autenticación, en este caso es un simple set
+    // al estado user
+    const onAuthStateChanged = (user) => {
         setUser(user);
         if (initializing) setInitializing(false);
     }
 
     useEffect(() => {
+        // Esta parte solo debe ejecutarse UNA VEZ, puede tener su propio useEffect o de menos, si lo pones en uno
+        // solo recuerda validar con un if para que se ejecute una sola vez
         const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-        return subscriber; // unsubscribe on unmount
+        return subscriber; // Es necesario cerrar el listener de la sesion, en useEffect esto se hace con el return
+        // de una función, si necesitas hacer algo más cuando el componente se desmonte, lo que tendrás que hacer es
+        // poner el siguiente return
+        /*
+        return () => {
+            subscriber();
+            // otros procedimientos para desmontar
+        }
+        * */
     }, []);
+    // Función para registrar un usuario en Firebase, inicia la sesión automáticamente si el registro fue exitoso
     const registerWithEmailAndPassword = () => {
-        console.log(userLoginData)
         auth()
             .createUserWithEmailAndPassword(userLoginData.email, userLoginData.password)
             .then(() => {
@@ -86,11 +99,11 @@ const App = () => {
                 if (error.code === 'auth/invalid-email') {
                     console.log('That email address is invalid!');
                 }
-                // alert(error.message)
                 alert(error.code)
                 console.error(error);
             });
     }
+    // Función para iniciar la sesión de un usuario registrado en firebase
     const loginWithEmailAndPassword = () => {
         console.log(userLoginData)
         auth()
@@ -106,10 +119,14 @@ const App = () => {
                 if (error.code === 'auth/invalid-email') {
                     console.log('That email address is invalid!');
                 }
-                // alert(error.message)
                 alert(error.code)
-                console.error(error);
             });
+    }
+    // Función para cerrar sesión
+    const logout = () => {
+        auth()
+            .signOut()
+            .then(() => alert('Cerraste sesión!'));
     }
 
     if (initializing) return null;
@@ -127,7 +144,7 @@ const App = () => {
                     style={{
                         backgroundColor: isDarkMode ? Colors.black : Colors.white,
                     }}>
-                    {!user && <Section title="Inicia sesión para continuar">
+                    {!user ? <Section title="Inicia sesión para continuar">
                         <View style={{flexDirection: "column"}}>
                             <Text>
                                 Ingresa tu correo
@@ -143,7 +160,6 @@ const App = () => {
                                        defaultValue={userLoginData.email}/>
                             <Text>
                                 Ingresa tu contraseña
-
                             </Text>
 
                             <TextInput textContentType="password"
@@ -157,9 +173,8 @@ const App = () => {
                             <Button title={`Registrarse`} onPress={registerWithEmailAndPassword}></Button>
                         </View>
 
-                    </Section>}
-                    {user && <Section title={`Bienvenido: ${user.email}`}>
-
+                    </Section>: <Section title={`Bienvenido: ${user.email}`}>
+                            <Button title="Cerrar sesión" onPress={logout}></Button>
                     </Section>}
 
                 </View>
