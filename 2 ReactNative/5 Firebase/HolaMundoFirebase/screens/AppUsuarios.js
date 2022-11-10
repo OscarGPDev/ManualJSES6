@@ -168,8 +168,8 @@ const App = () => {
                             <Button title={`Registrarse`} onPress={registerWithEmailAndPassword}></Button>
                         </View>
 
-                    </Section>: <Section title={`Bienvenido: ${user.email}`}>
-                            <Button title="Cerrar sesión" onPress={logout}></Button>
+                    </Section> : <Section title={`Bienvenido: ${user.email}`}>
+                        <Button title="Cerrar sesión" onPress={logout}></Button>
                     </Section>}
                 </View>
             </ScrollView>

@@ -7,11 +7,17 @@
  */
 
 import AppChatIRC from "./screens/AppChatIRC";
+import AppUsuarios from "./screens/AppUsuarios";
 
 
 const App = () => {
     return (
+        /*Sesiones con Firebase*/
+        <AppUsuarios/>
+        /*
+        Bases de datos con firestore
         <AppChatIRC/>
+        * */
     );
 };
 

@@ -37,13 +37,13 @@ const SignInSignUp = ({setUser}) => {
                     .collection('Usuarios')
                     .add({nombre: userLoginData.nombre, email: userLoginData.email});
                 /*
-                Para poner un ID especifico en lugar de uno al azar, usa doc y set, doc es la referencia a un documento
+                Para poner un ID específico en lugar de uno al azar, usa doc y set, doc es la referencia a un documento
                 o registro, y set es un método para CREAR O REEMPLAZAR el contenido del mismo
                 firestore()
                     .collection('Usuarios')
                     .doc("IDCustom")
                     .set({nombre: userLoginData.nombre, email: userLoginData.email});
-                Para actualizar un registro en especifico, en solo uno o mas valores(sin reemplazar los demás) usa el
+                Para actualizar un registro en específico, en solo uno o mas valores(sin reemplazar los demás) usa el
                 método update
                 firestore()
                     .collection('Usuarios')
