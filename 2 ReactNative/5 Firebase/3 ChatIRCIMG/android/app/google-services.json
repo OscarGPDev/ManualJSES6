@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "19423624152",
+    "project_id": "chatirc-7bf4f",
+    "storage_bucket": "chatirc-7bf4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19423624152:android:fcf23d59b0b16b79fbd0ad",
+        "android_client_info": {
+          "package_name": "com.chatirc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19423624152-5q3a06a0od8gr1qjq8o4p7ch6tltcg9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUG6GFMH4GJ5-uaB93THYn_gYfmwOaPB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19423624152-5q3a06a0od8gr1qjq8o4p7ch6tltcg9f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
